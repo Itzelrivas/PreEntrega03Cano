@@ -1,0 +1,40 @@
+.header {
+  background-color: black;
+  padding: 0%;
+}
+.header .header__logo img {
+  width: 60%;
+  padding: 8%;
+}
+
+.banner {
+  padding: 1%;
+}
+.banner img {
+  width: 100%;
+}
+
+.botonesPri {
+  padding: 3% 0% 3% 0%;
+  display: flex;
+  justify-content: center;
+}
+.botonesPri .botonesPri__cda {
+  width: 24%;
+  margin-left: 3.5%;
+  margin-right: 3.5%;
+  background-color: rgb(255, 253, 245);
+  font-family: "subtitulos";
+  border-color: bisque;
+  border-radius: 20px;
+}
+
+@font-face {
+  font-family: "subtitulos";
+  src: url(../fuentes/Gold_Song.otf);
+}
+.cardProducto {
+  padding: 0%;
+}
+
+/*# sourceMappingURL=style.css.map */
