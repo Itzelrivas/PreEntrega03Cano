@@ -14,6 +14,10 @@
   width: 100%;
 }
 
+.footerInicio img {
+  width: 100%;
+}
+
 .botonesPri {
   padding: 3% 0% 3% 0%;
   display: flex;
@@ -23,9 +27,10 @@
   width: 24%;
   margin-left: 3.5%;
   margin-right: 3.5%;
-  background-color: rgb(255, 253, 245);
+  background-color: rgb(0, 0, 0);
   font-family: "subtitulos";
-  border-color: bisque;
+  color: white;
+  border-color: rgb(41, 41, 40);
   border-radius: 20px;
 }
 
@@ -33,8 +38,52 @@
   font-family: "subtitulos";
   src: url(../fuentes/Gold_Song.otf);
 }
+@font-face {
+  font-family: "nombreProducto";
+  src: url(../fuentes/LEMONMILK-Medium.otf);
+}
 .cardProducto {
-  padding: 0%;
+  padding: 2%;
+  display: flex;
+}
+.cardProducto .card {
+  background-color: rgb(255, 253, 245);
+}
+.cardProducto .card .card-body {
+  text-align: center;
+}
+.cardProducto .card .card-body .card-title {
+  font-family: "nombreProducto";
+  display: flex;
+  justify-content: center;
+}
+.cardProducto .card .card-body .card-marca {
+  font-family: "subtitulos";
+}
+.cardProducto .card .card-body .card-precio {
+  font-family: "subtitulos";
+}
+
+.oculDiv {
+  text-align: center;
+  margin-bottom: 3%;
+}
+.oculDiv .btnOculDiv {
+  width: 24%;
+  background-color: rgb(0, 0, 0);
+  font-family: "subtitulos";
+  color: white;
+  border-color: rgb(41, 41, 40);
+  border-radius: 20px;
+}
+
+.cardProducto .card {
+  background-color: rgb(255, 253, 245);
+  transition: background-color 1.5s;
+}
+
+.cardProducto .card:hover {
+  background-color: rgb(186, 184, 174);
 }
 
 /*# sourceMappingURL=style.css.map */
