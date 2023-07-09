@@ -86,4 +86,16 @@
   background-color: rgb(186, 184, 174);
 }
 
+.filtroProductosDiv .container {
+  display: flex;
+  text-align: center;
+}
+.filtroProductosDiv .container .filtroDiv__Precios {
+  background-color: #6c757d;
+  color: white;
+  border-radius: 7px;
+  padding: 2%;
+  border-color: #6c757d;
+}
+
 /*# sourceMappingURL=style.css.map */

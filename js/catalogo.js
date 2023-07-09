@@ -39,8 +39,39 @@ if(localStorage.getItem("catalogoProductos")){
 let productosDiv = document.getElementById("catProductos")
 let verCatalogo = document.getElementById("botonesPri__cda--catalogo")
 let oculCatalogoBtn = document.getElementById("oculCatalogo")
+let filtroCatalogo = document.getElementById("filtroProductos")
 
 function mostrarCatalogo(array){
+  let filtroProductosDiv = document.createElement("div")
+  filtroProductosDiv.className = "filtroProductosDiv"
+  filtroProductosDiv.innerHTML = `<div class="container">
+    <h7 id="filtroDiv__texto" class="col-12 col-xl-3"> Filtrar por: </h7>
+
+    <div class="col-12 col-xl-3">
+      <button class="btn btn-secondary dropdown-toggle btnFiltroCategoria" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Categoría
+      </button>
+      <ul class="dropdown-menu dropdown-menu-dark">
+        <li><a class="dropdown-item active">Todos los productos</a></li>
+        <li><a class="dropdown-item">Bolsas</a></li>
+        <li><a class="dropdown-item">Camisas</a></li>
+        <li><a class="dropdown-item">Cremas y lociones</a></li>
+        <li><a class="dropdown-item">Vestidos</a></li>
+        <li><a class="dropdown-item">Zapatos</a></li>
+      </ul>
+    </div>
+
+    <div class="col-12 col-xl-3">
+      <button id="categoriaPrecio" class="filtroDiv__Precios">Precio</button>
+    </div>
+
+    <div class="col-12 col-xl-3">
+      <button id="categoriaOrdenPrecios" class="filtroDiv__Precios">Menor a mayor precios</button>
+    </div>
+  </div>`
+  filtroCatalogo.appendChild(filtroProductosDiv)
+
+
     productosDiv.innerHTML = ``
     for(let objeto of array){
         let productoNuevoDiv = document.createElement("div")
@@ -62,6 +93,8 @@ function mostrarCatalogo(array){
         agregarAlCarrito(objeto)
       })
     }
+
+
   let ocultarCatalogoBtn = document.createElement("div")
   ocultarCatalogoBtn.className = "oculCataBtn"
   ocultarCatalogoBtn.innerHTML = `<div class="oculDiv">
