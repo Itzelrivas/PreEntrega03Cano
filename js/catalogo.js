@@ -1,3 +1,4 @@
+//Class constructora de mi catálogo
 class Producto{
     constructor(producto, categoria, marca, precio, talla, codigo, imagen){
         this.producto = producto,
@@ -23,12 +24,11 @@ const producto10 = new Producto("Mochila blanca", "bolsas", "Karl Lagerfeld", 10
 const producto11 = new Producto("Bolsa Crossbody café", "bolsas", "Karl Lagerfeld", 850, "8cm * 15cm * 1.5cm", 11, "bolsaCBCafeKL.png")
 const producto12 = new Producto("Cartera azul", "bolsas", "Tommy Hilfiger", 600, "9cm * 7.5cm * 2cm", 12, "carteraAzulTommy.png")
 
+
+//Creamos nuestro catálogo y le agregamos algunos productos
 let catalogoProductos = [] 
  
 if(localStorage.getItem("catalogoProductos")){
-    //si existe la key estanteria en el storage, va a entrar aca
-    // console.log("Ya existe la key estanteria")
-    //cuando no es la primera vez, me traigo lo de storage
     catalogoProductos = JSON.parse(localStorage.getItem("catalogoProductos"))
 }else{
     console.log(`ENTRA POR PRIMERA VEZ. SETEAMOS ARRAY`)
@@ -37,6 +37,7 @@ if(localStorage.getItem("catalogoProductos")){
 }
 
 
+//Parte del DOM (inicial)
 let productosDiv = document.getElementById("catProductos")
 let catalogoCards = document.getElementById("botonesPri__cda--catalogo")
 let oculCatalogoBtn = document.getElementById("oculCatalogo")
@@ -44,6 +45,8 @@ let filtroCatalogo = document.getElementById("filtroProductos")
 let productosAgotados = document.getElementById("productosAgotados")
 let presupuesto = document.getElementById("presupuesto")
 
+
+//Función para mostrar los elementos de un array en cards
 function mostrarCatalogo(array){
     productosDiv.innerHTML = ``
     for(let objeto of array){
@@ -69,9 +72,11 @@ function mostrarCatalogo(array){
   }
 
 
+  //Toda la parte del filtro: categoría(todos los productos, bolsas, camisas, cremas y lociones, vestidos y zapatos)
   function filtrarPor(){
     let filtroProductosDiv = document.createElement("div")
     filtroProductosDiv.className = "filtroProductosDiv"
+    //Estructura de la parte del filtro
     filtroProductosDiv.innerHTML = `<div class="container">
       <h7 id="filtroDiv__texto" class="col-12 col-xl-3"> Filtrar por: </h7>
   
@@ -99,6 +104,7 @@ function mostrarCatalogo(array){
     </div>`
     filtroCatalogo.appendChild(filtroProductosDiv)
   
+    //Categoría: todos los productos disponibles
     let filtroTodosBtn = document.getElementById("filtroTodos")
     filtroTodosBtn.addEventListener("click", () => {
       productosDiv.innerHTML = ``
@@ -107,6 +113,7 @@ function mostrarCatalogo(array){
       mostrarCatalogo(catalogoProductos)
     })
 
+    //Categoría: bolsas
     let filtroBolsasBtn = document.getElementById("filtroBolsas")
     filtroBolsasBtn.addEventListener("click", () => {
       productosDiv.innerHTML = ``
@@ -125,6 +132,7 @@ function mostrarCatalogo(array){
       }
     })
 
+    //Categoría: camisas
     let filtroCamisasBtn = document.getElementById("filtroCamisas")
     filtroCamisasBtn.addEventListener("click", () => {
       productosDiv.innerHTML = ``
@@ -143,6 +151,7 @@ function mostrarCatalogo(array){
       }
     })
 
+    //Categoría: cremas y lociones
     let filtroCremasLocionesBtn = document.getElementById("filtroCremas")
     filtroCremasLocionesBtn.addEventListener("click", () => {
       productosDiv.innerHTML = ``
@@ -161,6 +170,7 @@ function mostrarCatalogo(array){
       }
     })
 
+    //Categoría: vestidos
     let filtroVestidosBtn = document.getElementById("filtroVestidos")
     filtroVestidosBtn.addEventListener("click", () => {
       productosDiv.innerHTML = ``
@@ -179,6 +189,7 @@ function mostrarCatalogo(array){
       }
     })
 
+    //Categoría: zapatos
     let filtroZapatosBtn = document.getElementById("filtroZapatos")
     filtroZapatosBtn.addEventListener("click", () => {
       productosDiv.innerHTML = ``
@@ -197,6 +208,8 @@ function mostrarCatalogo(array){
       }
     })
 
+
+    //Filtro de acuerdo al presupuesto del usuario
     let filtroPrecioBtn = document.getElementById("categoriaPrecio")
     filtroPrecioBtn.addEventListener("click", () => {
       productosDiv.innerHTML = ``
@@ -228,6 +241,8 @@ function mostrarCatalogo(array){
       })
     })
 
+
+    //Filtro que ordena los productos de menor a mayor precio
     let ordenPreciosBtn = document.getElementById("categoriaOrdenPrecios")
     ordenPreciosBtn.addEventListener("click", () => {
       productosDiv.innerText = ``
@@ -240,6 +255,7 @@ function mostrarCatalogo(array){
   }
 
 
+  //Función que oculta el cátalogo, y todos los botones relacionados a él
   function ocultarCatalogoBoton(){
     let ocultarCatalogoBtn = document.createElement("div")
     ocultarCatalogoBtn.className = "oculCataBtn"
@@ -257,6 +273,8 @@ function mostrarCatalogo(array){
     })
   }
 
+
+  //Funcionamiento del botón Catálogo
 catalogoCards.addEventListener("click", ()=>{
     filtrarPor()
     mostrarCatalogo(catalogoProductos)
