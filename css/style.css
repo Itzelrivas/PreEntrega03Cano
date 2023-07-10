@@ -64,6 +64,15 @@
   font-family: "subtitulos";
 }
 
+.cardProducto .card {
+  background-color: rgb(255, 253, 245);
+  transition: background-color 1.5s;
+}
+
+.cardProducto .card:hover {
+  background-color: rgb(186, 184, 174);
+}
+
 .oculDiv {
   text-align: center;
   margin: 3% 3%;
@@ -75,15 +84,6 @@
   color: white;
   border-color: rgb(41, 41, 40);
   border-radius: 20px;
-}
-
-.cardProducto .card {
-  background-color: rgb(255, 253, 245);
-  transition: background-color 1.5s;
-}
-
-.cardProducto .card:hover {
-  background-color: rgb(186, 184, 174);
 }
 
 .filtroProductosDiv .container {
@@ -100,14 +100,34 @@
 
 .presupuestoDiv {
   text-align: center;
+  font-family: "subtitulos";
+}
+.presupuestoDiv .presuUsuarioLabel {
+  margin: 2%;
 }
 .presupuestoDiv .presupuestoInput {
   margin: 2%;
+}
+.presupuestoDiv .btnPresupuesto button {
+  border-radius: 5px;
+  background-color: rgb(255, 253, 245);
 }
 
 .noProductosStock {
   text-align: center;
   margin-top: 2%;
+}
+
+.descuentoSeccionBtns {
+  text-align: center;
+  font-family: "Courier New";
+}
+.descuentoSeccionBtns .descuentoLabel {
+  margin-bottom: 2%;
+}
+.descuentoSeccionBtns .descuentoBtn {
+  border-radius: 5px;
+  background-color: rgb(255, 253, 245);
 }
 
 /*# sourceMappingURL=style.css.map */
