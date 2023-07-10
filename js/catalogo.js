@@ -93,6 +93,8 @@ function mostrarCatalogo(array){
 catalogoCards.addEventListener("click", ()=>{
     descuentoSeccion.innerText = ``
     aeProductosSeccion.innerText = ``
+    modalBodyCarrito.innerText = ``
+    carritoTotal.innerText = ``
     localStorage.setItem("catalogo", JSON.stringify(catalogoProductos))
     filtrarPor()
     mostrarCatalogo(catalogoProductos)

@@ -16,3 +16,23 @@
     img{width: 100%;}
 }
 
+.botonesCM{
+    display: flex;
+    justify-content: end;
+    margin: 1%;
+    .carritoBtn{
+        border-color: rgb(255 253 245);
+        background-color: rgb(255 253 245);
+        border-radius: 22px;
+        img{width: 10%;}
+    }
+    
+    .inicioBtn{
+        margin-left: 1%;
+        border-color: rgb(255 253 245);
+        background-color: rgb(255 253 245);
+        border-radius: 22px;
+        font-family: "subtitulos";
+    }
+}
+

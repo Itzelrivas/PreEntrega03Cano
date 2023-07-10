@@ -18,6 +18,27 @@
   width: 100%;
 }
 
+.botonesCM {
+  display: flex;
+  justify-content: end;
+  margin: 1%;
+}
+.botonesCM .carritoBtn {
+  border-color: rgb(255, 253, 245);
+  background-color: rgb(255, 253, 245);
+  border-radius: 22px;
+}
+.botonesCM .carritoBtn img {
+  width: 10%;
+}
+.botonesCM .inicioBtn {
+  margin-left: 1%;
+  border-color: rgb(255, 253, 245);
+  background-color: rgb(255, 253, 245);
+  border-radius: 22px;
+  font-family: "subtitulos";
+}
+
 .botonesPri {
   padding: 3% 0% 3% 0%;
   display: flex;
@@ -171,6 +192,26 @@
   border-radius: 5px;
   background-color: black;
   color: white;
+}
+
+.carritoClass {
+  display: flex;
+  justify-content: center;
+}
+.carritoClass .cardCarrito {
+  text-align: center;
+  font-family: "subtitulos";
+  background-color: rgb(183, 152, 116);
+  color: antiquewhite;
+  margin: 1%;
+  padding: 2%;
+}
+
+.totalClass {
+  margin: 2%;
+  font-family: "subtitulos";
+  text-align: center;
+  background-color: rgb(255, 253, 245);
 }
 
 /*# sourceMappingURL=style.css.map */

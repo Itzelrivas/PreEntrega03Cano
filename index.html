@@ -17,12 +17,23 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+    <!--Parte superior de la página + botones carrito y menú-->
     <div class="container-fluid header">
         <div class="col-2 col-xl-1 header__logo">
             <img src="imagenes/logoBlanco_PanchoRoss.png" alt="logo_PanchoRoss">
         </div>
     </div>
 
+    <div class="botonesCM">
+        <button id="carritoBtnID" class="col-3 col-xl-2 carritoBtn">
+            <img src="imagenes/carritoDoddle.png" alt="Carrito">
+        </button>
+        <button id="inicioBtnID" class="col-3 col-xl-2 inicioBtn">
+            Inicio
+        </button>
+    </div>
+
+    <!--Banner-->
     <div class="container-fluid banner" data-aos="fade-up" data-aos-duration="1500">
         <img src="imagenes/banner_PanchoRoss.png" alt="banner_PanchoRoss">
     </div>
@@ -42,56 +53,63 @@
         </button>
     </div>
 
-</div>
+    <!--Carrito-->
+    <div id="carrito" class="carritoClass">
 
-<!--Boton catálogo-->
-<div class="catalogoSeccion">
-
-    <!--Filtro de productos-->
-    <div id="filtroProductos" class="row filPro">
+    </div>
+    <div id="totalCarritoID" class="totalClass">
 
     </div>
 
-    <!--Presupuesto-->
-    <div id="presupuesto" class="row presupuestoDiv">
+    <!--Boton catálogo-->
+    <div class="catalogoSeccion">
 
-    </div>
+        <!--Filtro de productos-->
+        <div id="filtroProductos" class="row filPro">
 
-    <!--Mensaje por si los productos de una categoria estan agotados-->
-    <div id="productosAgotados" class="row">
+        </div>
 
-    </div>
+        <!--Presupuesto-->
+        <div id="presupuesto" class="row presupuestoDiv">
 
-    <!--Catalogo-->
-    <div class="container">
-        <div id="coincidencia"></div>
-        <div id="catProductos" class="row">
+        </div>
+
+        <!--Mensaje por si los productos de una categoria estan agotados-->
+        <div id="productosAgotados" class="row">
+
+        </div>
+
+        <!--Catalogo-->
+        <div class="container">
+            <div id="coincidencia"></div>
+                <div id="catProductos" class="row">
           
+                </div>
+            </div>
+
+            <div class="container">
+                <div id= "oculCatalogo" class="row">
+
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="container">
-        <div id= "oculCatalogo" class="row">
-
-        </div>
+    <!--Botón descuentos-->
+    <div id="descuentosSeccion">
+    
     </div>
-</div>
 
-<!--Botón descuentos-->
-<div id="descuentosSeccion">
+    <!--Botón agregar y eliminar productos-->
+    <div id="aeProductosSeccion">
     
-</div>
-
-<!--Botón agregar y eliminar productos-->
-<div id="aeProductosSeccion">
-    
-</div>
+    </div>
 
 
-<!--Footer-->
-<footer class="footerInicio">
-    <img src="imagenes/footer_PanchoRoss.png" alt="Pancho Ross">
-</footer>
+    <!--Footer-->
+    <footer class="footerInicio">
+        <img src="imagenes/footer_PanchoRoss.png" alt="Pancho Ross">
+    </footer>
 
 <!--Bootstrap-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
@@ -107,5 +125,6 @@
 <script src="js/filtro.js"></script>
 <script src="js/descuentos.js"></script>
 <script src="js/aeProductos.js"></script>
+<script src="js/btnsHeader.js"></script>
 </body>
 </html>

@@ -8,6 +8,8 @@ aeProductosBtn.addEventListener("click", () => {
     oculCatalogoBtn.innerText = ``
     filtroCatalogo.innerText = ``
     descuentoSeccion.innerText = ``
+    modalBodyCarrito.innerText = ``
+    carritoTotal.innerText = ``
 
     let contraseñaProductos = document.createElement("div")
     contraseñaProductos.className = "conProductosSeccion"
