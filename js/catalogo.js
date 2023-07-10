@@ -26,12 +26,11 @@ const producto12 = new Producto("Cartera azul", "bolsas", "Tommy Hilfiger", 600,
 
 //Creamos nuestro catálogo y le agregamos algunos productos
 let catalogoProductos = [] 
- 
 if(localStorage.getItem("catalogoProductos")){
-    catalogoProductos = JSON.parse(localStorage.getItem("catalogoProductos"))
+  catalogoProductos = JSON.parse(localStorage.getItem("catalogoProductos"))
 }else{
-    catalogoProductos.push(producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8, producto9, producto10, producto11, producto12)
-    localStorage.setItem("catalogoProductos", JSON.stringify(catalogoProductos))
+  catalogoProductos.push(producto1, producto2, producto3, producto4, producto5, producto6, producto7, producto8, producto9, producto10, producto11, producto12)
+  localStorage.setItem("catalogoProductos", JSON.stringify(catalogoProductos)) 
 }
 
 
@@ -47,24 +46,26 @@ let presupuesto = document.getElementById("presupuesto")
 //Función para mostrar los elementos de un array en cards
 function mostrarCatalogo(array){
     productosDiv.innerHTML = ``
-    for(let objeto of array){
+    for(let i=0; i<array.length; i++){
         let productoNuevoDiv = document.createElement("div")
         productoNuevoDiv.className = "col-12 col-xl-3 cardProducto"
-        productoNuevoDiv.innerHTML = `<div id="${objeto.codigo}" class="card" style="width: 18rem;">
-        <img class="card-img-top img-fluid" style="height: 200px;" src="imagenes/${objeto.imagen}" alt="${objeto.producto} de ${objeto.marca}">
+        productoNuevoDiv.innerHTML = `<div id="${array[i].codigo}" class="card" style="width: 18rem;">
+        <img class="card-img-top img-fluid" style="height: 200px;" src="imagenes/${array[i].imagen}" alt="${array[i].producto} de ${array[i].marca}">
         <div class="card-body"> 
-          <h7 class="card-title">${objeto.producto}</h7>
-          <p class="card-marca">MARCA: ${objeto.marca}</p>
-          <p class="card-precio">PRECIO: $${objeto.precio}</p>
-          <button id="agregarPro${objeto.codigo}" class="btn btn-outline-success">Agregar al carrito</button>
-        </div>
+          <h7 class="card-title">${array[i].producto}</h7>
+          <p class="card-marca">MARCA: ${array[i].marca}</p>
+          <p class="card-precio">PRECIO: $${array[i].precio}</p>
+          <p class="card-talla">TALLA O DIMENSIONES: ${array[i].talla}</p>
+          <button id="agregarPro${array[i].codigo}" class="btn btn-outline-success">Agregar al carrito</button>
+          <p>Código: ${array[i].codigo}</p>
+          </div>
       </div>`
 
       productosDiv.appendChild(productoNuevoDiv)
 
-      let agregarPro = document.getElementById(`agregarPro${objeto.codigo}`)
+      let agregarPro = document.getElementById(`agregarPro${array[i].codigo}`)
       agregarPro.addEventListener("click", () => {
-        agregarAlCarrito(objeto)
+        agregarAlCarrito(array[i])
       })
     }
   }
@@ -90,7 +91,9 @@ function mostrarCatalogo(array){
 
   //Funcionamiento del botón Catálogo
 catalogoCards.addEventListener("click", ()=>{
-  descuentoSeccion.innerText = ``
+    descuentoSeccion.innerText = ``
+    aeProductosSeccion.innerText = ``
+    localStorage.setItem("catalogo", JSON.stringify(catalogoProductos))
     filtrarPor()
     mostrarCatalogo(catalogoProductos)
     ocultarCatalogoBoton()

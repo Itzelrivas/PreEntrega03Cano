@@ -17,6 +17,7 @@ descuentosBtn.addEventListener("click", () => {
     presupuesto.innerText = ``
     oculCatalogoBtn.innerText = ``
     filtroCatalogo.innerText = ``
+    aeProductosSeccion.innerText = ``
 
     Swal.fire({
         title: 'Registrate para obtener un 10% en tu primera compra :)',

@@ -15,6 +15,9 @@
             .card-precio{
                 font-family: "subtitulos";
             }
+            .card-talla{
+                font-family: "subtitulos";
+            }
         }
     }
 }
@@ -40,6 +43,10 @@
     .filtroDiv__Precios{
         background-color: #6c757d; color: white; border-radius: 7px; padding: 2%; border-color: #6c757d;
     }
+}
+
+.filPro{
+    width: 100%;
 }
 
 //Filtro por precio ingresado por el usuario

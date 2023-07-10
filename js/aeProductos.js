@@ -41,16 +41,91 @@ aeProductosBtn.addEventListener("click", () => {
 
             agregarProductosBtn.addEventListener("click", () => {
                 aeProductosSeccion.innerText = ``
+                let formularioAgregar = document.createElement("div")
+                formularioAgregar.className = "formAgregarEliminarDiv"
+                formularioAgregar.innerHTML = `
+                <label class="formAgregar">Producto: <input id="formAgregarProducto" type="text"></label><br>
+                <label class="formAgregar">Categoría (bolsas, camisas, cremasLociones, vestidos, zapatos): <input id="formAgregarCategoria" type="text"></label><br>
+                <label class="formAgregar">Marca: <input id="formAgregarMarca" type="text"></label><br>
+                <label class="formAgregar">Precio: <input id="formAgregarPrecio" type="text"></label><br>
+                <label class="formAgregar">Talla: <input id="formAgregarTalla" type="text"></label><br>
+                <label class="formAgregar">Nombre del archivo de la imagen + .png: <input id="formAgregarImagen" type="text"></label><br>
+                <button id="btnFormAgregar" class="formAgregar">Cargar nuevo producto</button>
+                `
+                aeProductosSeccion.appendChild(formularioAgregar)
+
+                let botonAgregar = document.getElementById("btnFormAgregar")
+                botonAgregar.addEventListener("click", () => {
+
+                    let nuevoProducto = document.getElementById("formAgregarProducto").value
+                    let nuevoCategoria = document.getElementById("formAgregarCategoria").value
+                    let nuevoMarca = document.getElementById("formAgregarMarca").value
+                    let nuevoPrecio = document.getElementById("formAgregarPrecio").value
+                    let nuevoTalla = document.getElementById("formAgregarTalla").value
+                    let nuevoImagen = document.getElementById("formAgregarImagen").value
+                    const productoNuevo = new Producto(nuevoProducto, nuevoCategoria, nuevoMarca, nuevoPrecio, nuevoTalla, catalogoProductos.length+1, nuevoImagen)
+                    catalogoProductos.push(productoNuevo)
+                    localStorage.setItem("catalogoProductos", JSON.stringify(catalogoProductos))
+                    aeProductosSeccion.innerText = ``
+                    mostrarCatalogo(catalogoProductos)
+
+                    let btnCerrar = document.createElement("div")
+                    btnCerrar.className = "botonCerrarForm"
+                    btnCerrar.innerHTML = `
+                    <button id="btnCerrarA" class="cerrarForm">Cerrar</button>
+                    `
+                    aeProductosSeccion.appendChild(btnCerrar)
+
+                    let botonCerrarA = document.getElementById("btnCerrarA")
+                    botonCerrarA.addEventListener("click", () => {
+                        productosDiv.innerHTML = ``
+                        aeProductosSeccion.innerText = ``
+                        aeProductosSeccion.appendChild(seleccionAgregar)
+                    })
+                })
+
             })
 
             eliminarProductosBtn.addEventListener("click", () => {
                 aeProductosSeccion.innerText = ``
+                mostrarCatalogo(catalogoProductos)
+                let formularioEliminar = document.createElement("div")
+                formularioEliminar.className = "formAgregarEliminarDiv"
+                formularioEliminar.innerHTML = `
+                <label class="formAgregar">Ingresa el código del producto que deseas eliminar: <input id="formEliminarCodigo" type="text"></label><br>
+                <button id="btnFormEliminar" class="formAgregar">Eliminar producto</button>
+                `
+                aeProductosSeccion.appendChild(formularioEliminar)
+                let btnEliminar = document.getElementById("btnFormEliminar")
+                btnEliminar.addEventListener("click", () => {
+                    let codigo = document.getElementById("formEliminarCodigo").value
+
+                    let catalogoProductosCodigo = catalogoProductos.map(producto => producto.codigo)
+                    let indice = catalogoProductosCodigo.indexOf(codigo)
+                    catalogoProductos.splice(indice, 1)
+                    localStorage.setItem("catalogoProductos", JSON.stringify(catalogoProductos))
+                    mostrarCatalogo(catalogoProductos)
+
+                    let btnCerrar = document.createElement("div")
+                    btnCerrar.className = "botonCerrarForm"
+                    btnCerrar.innerHTML = `
+                    <button id="btnCerrarA" class="cerrarForm">Cerrar</button>
+                    `
+                    aeProductosSeccion.appendChild(btnCerrar)
+
+                    let botonCerrarA = document.getElementById("btnCerrarA")
+                    botonCerrarA.addEventListener("click", () => {
+                        productosDiv.innerHTML = ``
+                        aeProductosSeccion.innerText = ``
+                        aeProductosSeccion.appendChild(seleccionAgregar)
+                    })
+                })
             })
         } 
         else{
             Swal.fire({
                 icon: 'warning',
-                title: '¡Oh no! Parece que no tienes acceso a esta función, ya que la constraseña fue incorrecta :('
+                title: '¡Oh no! Parece que no tienes acceso a esta función, ya que la constraseña fue incorrecta.'
             })
         }
     })
