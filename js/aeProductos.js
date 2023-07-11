@@ -108,6 +108,11 @@ aeProductosBtn.addEventListener("click", () => {
                     localStorage.setItem("catalogoProductos", JSON.stringify(catalogoProductos))
                     mostrarCatalogo(catalogoProductos)
 
+                    let carritoProductos = productosEnCarrito.map(productoCarrito => productoCarrito.codigo)
+                    let indiceCarrito = carritoProductos.indexOf(codigo)
+                    productosEnCarrito.splice(indiceCarrito,1)
+                    localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
+
                     let btnCerrar = document.createElement("div")
                     btnCerrar.className = "botonCerrarForm"
                     btnCerrar.innerHTML = `
