@@ -1,8 +1,13 @@
 let descuentosBtn = document.getElementById("botonesPri__cda--descuentos")
 let descuentoSeccion = document.getElementById("descuentosSeccion")
+
+//Array del correo de los clientes
 let clientes = []
 
+//Botón de descuentos 
 descuentosBtn.addEventListener("click", () => {
+
+    //Seteamos el array de correos de clientes
     if(localStorage.getItem("clientes")){
         clientes = JSON.parse(localStorage.getItem("clientes"))
     }else{
@@ -12,6 +17,7 @@ descuentosBtn.addEventListener("click", () => {
         localStorage.setItem("clientes", JSON.stringify(clientes))
     }
 
+    //Reseteamos todo para que no se encimen
     productosDiv.innerHTML = ``
     productosAgotados.innerText = ``
     presupuesto.innerText = ``
@@ -30,6 +36,7 @@ descuentosBtn.addEventListener("click", () => {
         confirmButtonColor: 'black'
       })
     
+    //Formulario para obtener un código de descuento
     let descuentoSeccionDiv = document.createElement("div")
     descuentoSeccionDiv.className = "descuentoSeccionBtns"
     descuentoSeccionDiv.innerHTML = `<div>
@@ -44,6 +51,7 @@ descuentosBtn.addEventListener("click", () => {
         let a=0
         for(let i=0; i < clientes.length; i++)
         {
+            //Ese correo ya esta registrado y no se brinda un código de descuento
             if(clientes[i] == correoUsuario)
             {
                 Swal.fire({
@@ -54,6 +62,7 @@ descuentosBtn.addEventListener("click", () => {
                 break
             }
         }
+        //Ese correo no esta registrado, se brinda un código de descuento y se pushea al array de clientes
         if(a==0){
             Swal.fire({
                 icon: 'succes',

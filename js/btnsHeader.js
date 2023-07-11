@@ -1,4 +1,4 @@
-
+//Accedemos al boton menú de mi index, el cual resetea todo y solo deja los tres botones principales: catálogo, descuento, agregar y eliminar productos
 let btnMenu = document.getElementById("inicioBtnID")
 btnMenu.addEventListener("click", () => {
     productosDiv.innerHTML = ``
@@ -12,29 +12,27 @@ btnMenu.addEventListener("click", () => {
     carritoTotal.innerText = ``
 })
 
-
+//Botón carrito
 let productosEnCarrito 
 if(localStorage.getItem("carrito")){
-   //cuando ya existe algo en el storage con la clave carrito
    productosEnCarrito = JSON.parse(localStorage.getItem("carrito"))
 }else{
-   //no existe nada en el storage
+   //No esta en el storage
    productosEnCarrito = []
    localStorage.setItem("carrito", productosEnCarrito)
 }
 
+//Agregamos productos a nuestro array del carrito
 function agregarAlCarrito(producto){
-    //preguntar si existe ese libro en el array
     let productoAgregado = productosEnCarrito.find((elem)=>elem.codigo == producto.codigo) 
-    //me devuelve sino encuentra undefined, si encuenta el elemento
     if(productoAgregado == undefined){
-       //código para sumar al array carrito
+       //Sumamos al carrito el producto
        productosEnCarrito.push(producto)
        localStorage.setItem("carrito", JSON.stringify(productosEnCarrito))
  
-       //alert para agregar libro
+       //Alert que indica que ya se agregó el producto seleccionado
        Swal.fire({
-          title: `Ha agregado un producto al carrito`,
+          title: `Ha agregado un producto al carrito.`,
           text:`${producto.producto} ha sido agregado.`,
           confirmButtonColor: "black",
           confirmButtonText : "Gracias",
@@ -43,14 +41,10 @@ function agregarAlCarrito(producto){
  
        })
     }else{
-       //sumar uno a cantidad
-       // console.log(`El libro ${libro.titulo} ya existe en el carrito `)
- 
-       //Sweetalert 
+       //El producto seleccionado ya está en el carrito
        Swal.fire({
           title: `${producto.producto} ya existe en el carrito`,
           icon: "info",
-          //tiempo de aparición: en milisegundos
           timer: 2000,
           showConfirmButton: false
  
@@ -58,12 +52,11 @@ function agregarAlCarrito(producto){
     }
 }
 
-
+//Aparecen cards mostrando los productos del carrito 
 let modalBodyCarrito = document.getElementById("carrito")
 let carritoTotal = document.getElementById("totalCarritoID")
 function cargarProductosCarrito(array){
     modalBodyCarrito.innerHTML = ``
-    //primer for each imprime las card
     array.forEach((productoCarrito)=>{
        modalBodyCarrito.innerHTML += `<div id="productoCarrito${productoCarrito.codigo}" class="col-12 col-xl-3 card cardCarrito" style="width: 18rem;">
         <div class="">
@@ -78,23 +71,20 @@ function cargarProductosCarrito(array){
         </div>
     </div>`
     })
-    //segundo for each adjunta evento eliminar
+    //Funcionamiento del botón eliminar producto
     array.forEach((productoCarrito) => {
-       //manipular el DOM sin guardar en variable
        document.getElementById(`botonEliminar${productoCarrito.codigo}`).addEventListener("click", () => {
-          //borrar del DOM
+          //Se borra del DOM
           let cardProducto = document.getElementById(`productoCarrito${productoCarrito.codigo}`)
           cardProducto.remove()
-          //borrar del array
-          //encontramos objeto a eliminar
+          //Se borra del array del carrito
           let productoEliminar = array.find((producto) => producto.codigo == productoCarrito.codigo)
-          //buscar indice
           let posicion = array.indexOf(productoEliminar)
           array.splice(posicion,1)
-          //setear storage
+          //Actualizamos el storage
           localStorage.setItem("carrito", JSON.stringify(array))
  
-          //debemos calcularTotal??
+          //Calculamos el total
           calcularTotal(array)
        })
     })
@@ -102,15 +92,13 @@ function cargarProductosCarrito(array){
     
  }
  
+ //Función para calcular el total de los productos del carrito
  function calcularTotal(array){
-    //método reduce 
-    //DOS PARAMETROS: primero la function y segundo valor en el que quiero inicializar el acumulador
     let total = array.reduce((acc, productoCarrito)=> acc + productoCarrito.precio , 0)
     if(total == 0){
         Swal.fire({
             title: `No hay productos en el carrito`,
             icon: "warning",
-            //tiempo de aparición: en milisegundos
             timer: 2000,
             showConfirmButton: false
          })
@@ -123,7 +111,7 @@ function cargarProductosCarrito(array){
     }
  }
 
-
+//El botón del carrito resetea para que solo aparezcan las cards de los productos del carrito y el total
 let btnCarrito = document.getElementById("carritoBtnID")
 btnCarrito.addEventListener("click", () => {
     productosDiv.innerHTML = ``

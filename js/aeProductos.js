@@ -1,6 +1,8 @@
+//Capturamos al dom la sección de agregar y eliminar productos
 let aeProductosSeccion = document.getElementById("aeProductosSeccion")
 let aeProductosBtn = document.getElementById("botonesPri__cda--aeproductos")
 
+//Función del boton agregar y eliminar productos
 aeProductosBtn.addEventListener("click", () => {
     productosDiv.innerHTML = ``
     productosAgotados.innerText = ``
@@ -11,6 +13,7 @@ aeProductosBtn.addEventListener("click", () => {
     modalBodyCarrito.innerText = ``
     carritoTotal.innerText = ``
 
+    //Contraseña para tener acceso a la función 
     let contraseñaProductos = document.createElement("div")
     contraseñaProductos.className = "conProductosSeccion"
     contraseñaProductos.innerHTML = `
@@ -41,6 +44,7 @@ aeProductosBtn.addEventListener("click", () => {
             let agregarProductosBtn = document.getElementById("agregar")
             let eliminarProductosBtn = document.getElementById("eliminar")
 
+            //Agregar productos
             agregarProductosBtn.addEventListener("click", () => {
                 aeProductosSeccion.innerText = ``
                 let formularioAgregar = document.createElement("div")
@@ -88,6 +92,7 @@ aeProductosBtn.addEventListener("click", () => {
 
             })
 
+            //Eliminar productos
             eliminarProductosBtn.addEventListener("click", () => {
                 aeProductosSeccion.innerText = ``
                 mostrarCatalogo(catalogoProductos)
